@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Makn – Vos automatisations Make, enfin dans votre poche.</title>
+    <meta name="description" content="Surveillez et contrôlez vos scénarios Make directement depuis votre iPhone." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0d0f1a;
+            --navy: #2d3166;
+            --green: #2a9d4e;
+            --green-lt: #3dbd63;
+            --accent: #4caf70;
+            --white: #ffffff;
+            --muted: rgba(255, 255, 255, 0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 48px 24px;
+            overflow-x: hidden;
+        }
+
+        /* Glow blob - dual color from logo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -250px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 650px;
+            background: radial-gradient(ellipse at 40% 50%, rgba(45, 49, 102, 0.55) 0%, transparent 60%),
+                radial-gradient(ellipse at 65% 50%, rgba(42, 157, 78, 0.35) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Logo image */
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            /* invert the white bg to transparent via mix-blend */
+            filter: drop-shadow(0 0 24px rgba(42, 157, 78, 0.4));
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(42, 157, 78, 0.12);
+            border: 1px solid rgba(42, 157, 78, 0.35);
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green-lt);
+            border-radius: 50%;
+            animation: pulse 1.8s ease infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.3
+            }
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .gradient {
+            background: linear-gradient(135deg, var(--green-lt) 0%, #5de09a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p.sub {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--muted);
+            max-width: 540px;
+            line-height: 1.75;
+            margin: 0 auto 48px;
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--green) 100%);
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 0 40px rgba(42, 157, 78, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            margin-bottom: 80px;
+        }
+
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 60px rgba(42, 157, 78, 0.55);
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 48px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.25);
+            line-height: 2;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 4px;
+        }
+
+        .footer-logo-link img {
+            height: 28px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+            vertical-align: middle;
+        }
+
+        .footer-logo-link:hover img {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Logo -->
+    <img src="assets/logo.png" alt="Logo Makn" class="logo-img" />
+
+    <!-- Badge -->
+    <div class="badge">
+        <span class="badge-dot"></span>
+        Bientôt sur l'App Store
+    </div>
+
+    <!-- Titre -->
+    <h1>
+        Vos automatisations Make,<br />
+        <span class="gradient">enfin dans votre poche.</span>
+    </h1>
+
+    <!-- Sous-titre -->
+    <p class="sub">
+        Surveillez, débuggez et relancez vos scénarios critiques
+        d'une seule main, directement depuis votre iPhone.
+        Peu importe où vous êtes.
+    </p>
+
+    <!-- CTA -->
+    <a href="mailto:hello@makn.app" class="cta" id="cta-contact">
+        ✉️ Rejoindre la Beta
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Makn App. Tous droits réservés.</p>
+        <p>Makn n'est pas affilié à, ni approuvé par Make.com (Celonis SE).</p>
+        <div class="footer-links">
+            <a href="#" id="footer-privacy">Privacy Policy</a>
+            <a href="assets/logo.png" target="_blank" class="footer-logo-link" id="footer-logo" aria-label="Logo Makn">
+                <img src="assets/logo.png" alt="Makn" />
+            </a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
