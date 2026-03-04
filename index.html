@@ -10,6 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 
     <style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('assets/Geist-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         *,
         *::before,
         *::after {
@@ -33,7 +40,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Geist', 'Inter', sans-serif;
             background: var(--bg);
             color: var(--white);
             min-height: 100vh;
@@ -62,8 +69,8 @@
 
         /* Logo image */
         .logo-img {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
             margin-bottom: 20px;
             /* invert the white bg to transparent via mix-blend */
@@ -187,6 +194,128 @@
         .footer-logo-link:hover img {
             opacity: 1;
         }
+
+        /* Timeline Section */
+        .roadmap {
+            max-width: 800px;
+            margin: 0 auto 100px;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .roadmap h2 {
+            display: none;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        /* The vertical line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--navy), var(--green), transparent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+
+        /* The dots on the timeline */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            right: -6px;
+            background-color: var(--bg);
+            border: 2px solid var(--green-lt);
+            top: 24px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--green-lt);
+        }
+
+        /* Place the container to the left */
+        .left {
+            left: 0;
+            text-align: right;
+        }
+
+        /* Place the container to the right */
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+
+        /* Fix the dots for containers on the right */
+        .right::after {
+            left: -6px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            border-color: rgba(42, 157, 78, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                text-align: left;
+            }
+
+            .timeline-item::after {
+                left: 25px;
+                right: auto;
+            }
+
+            .left,
+            .right {
+                left: 0;
+            }
+        }
     </style>
 </head>
 
@@ -214,14 +343,59 @@
         Peu importe où vous êtes.
     </p>
 
-    <!-- CTA -->
-    <a href="mailto:hello@makn.app" class="cta" id="cta-contact">
-        ✉️ Rejoindre la Beta
-    </a>
+    <!-- Roadmap Header -->
+    <div class="roadmap-header">
+        <span class="roadmap-title">Roadmap <span class="gradient">2026</span></span>
+        <div class="mouse">
+            <div class="wheel"></div>
+        </div>
+    </div>
+
+    <!-- Roadmap -->
+    <section class="roadmap" id="roadmap">
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Pilotage Complet</h3>
+                    <p>Gestion totale de vos scénarios : activation, suppression et planification granulaire.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Analytics Avancés</h3>
+                    <p>Suivi précis des taux d'erreur et identification des scénarios les plus fragiles.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Hub Webhooks</h3>
+                    <p>Vue centralisée et inspection en temps réel des payloads reçus par vos webhooks.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Security Scan</h3>
+                    <p>Analyse automatique de vos Blueprints pour détecter les failles de sécurité.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Smart Quotas</h3>
+                    <p>Gestion intelligente des opérations par équipe et kill-switch automatique.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Audit Log Étendu</h3>
+                    <p>Historique complet des actions avec recherche plein texte ultra-rapide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Makn App. Tous droits réservés.</p>
+        <p>© 2026 Makn App. Tous droits réservés.</p>
         <p>Makn n'est pas affilié à, ni approuvé par Make.com (Celonis SE).</p>
         <div class="footer-links">
             <a href="privacy-policy.html" id="footer-privacy">Privacy Policy</a>
