@@ -312,9 +312,115 @@
             }
 
             .left,
-            .right {
-                left: 0;
+        }
+
+        /* Screenshots Section */
+        .screenshots-section {
+            width: 100%;
+            padding: 100px 0;
+            perspective: 2000px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .screenshots-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 600px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .screenshot-card {
+            position: absolute;
+            width: 280px;
+            border-radius: 40px;
+            background: #000;
+            border: 8px solid #1a1a1a;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+
+        /* Phone Mockup Subtle Gloss */
+        .screenshot-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            display: block;
+            border-radius: 32px;
+        }
+
+        /* Subtle 3D Stack Effect */
+        .card-1 {
+            transform: translateX(-270px) rotateY(20deg) scale(0.9);
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .card-2 {
+            transform: translateX(-90px) rotateY(10deg) scale(0.98);
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        .card-3 {
+            transform: translateX(90px) rotateY(-10deg) scale(0.98);
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        .card-4 {
+            transform: translateX(270px) rotateY(-20deg) scale(0.9);
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+
+
+        @media (max-width: 768px) {
+            .screenshots-section {
+                padding: 40px 0;
             }
+
+            .screenshots-group {
+                height: 450px;
+                flex-direction: row;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 0 40px;
+                gap: 20px;
+                mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+                -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            }
+
+            .screenshot-card {
+                position: relative;
+                flex-shrink: 0;
+                width: 220px;
+                transform: none !important;
+                opacity: 1 !important;
+                margin: 0;
+                border-width: 6px;
+            }
+        }
+
+        /* Roadmap Section overlap fix */
+        .roadmap {
+            margin-top: -40px;
         }
     </style>
 </head>
@@ -343,9 +449,27 @@
         Peu importe où vous êtes.
     </p>
 
+    <!-- Screenshots Section -->
+    <section class="screenshots-section">
+        <div class="screenshots-group">
+            <div class="screenshot-card card-1">
+                <img src="assets/Apple iPhone 16 Pro Max Screenshot 1.png" alt="App Overview">
+            </div>
+            <div class="screenshot-card card-2">
+                <img src="assets/Apple iPhone 16 Pro Max Screenshot 2.png" alt="Scenario List">
+            </div>
+            <div class="screenshot-card card-3">
+                <img src="assets/Apple iPhone 16 Pro Max Screenshot 3.png" alt="Analytics View">
+            </div>
+            <div class="screenshot-card card-4">
+                <img src="assets/Apple iPhone 16 Pro Max Screenshot 4.png" alt="Webhook Hub">
+            </div>
+        </div>
+    </section>
+
     <!-- Roadmap Header -->
     <div class="roadmap-header">
-        <span class="roadmap-title">Roadmap <span class="gradient">2026</span></span>
+        <span class="roadmap-title"><span class="gradient">Roadmap</span></span>
         <div class="mouse">
             <div class="wheel"></div>
         </div>
